@@ -2,7 +2,10 @@
 Selecionando todos os elementos com o seletor .teclas utilizando o querySelectorAll() 
 E armazenando esta lista dos seletores os dentro de  uma referência.
 */
-const listaDeTeclas = document.querySelectorAll('.tecla');
+const listaDeTeclas = document.querySelectorAll('.tecla')
+
+// Acessando um item da lista 
+listaDeTeclas[0].onclick = tocarSomPom
 
 
 // Desta forma temos uma função que irá executar o bloco de código abaixo.
