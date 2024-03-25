@@ -1,8 +1,8 @@
 // Desta forma temos uma função que irá executar o bloco de código abaixo.
-function tocarSomPom(){
+function tocarSom(idElementoAudio){
 
     // Após a função ser chamada irá executar: play de uma tag de multimidia da pagina html.
-    document.querySelector('#som_tecla_pom').play();
+    document.querySelector(idElementoAudio).play();
 
 }
 
@@ -21,9 +21,33 @@ as teclas do nosso mid.
 let contador = 0;
 
 while(contador < listaDeTeclas.length ){
-    listaDeTeclas[contador].onclick = tocarSomPom;
+
+
+    // reserando a lista de teclas em uma referência.
+    const tecla = listaDeTeclas[contador]
+
+    /*.clasList é uma função que vê toda as
+     classes de um elemento específico do html.
+     
+     No caso estamos acessando o seletor classe
+     para pegar outra classe, que no caso é um texto.*/ 
+    const instrumento = tecla.classList[1];
+
+
+    /*Desta forma manipulamos o HTML, da seguinte forma
+    -> pegando a segunda classe da tecla acionada
+    -> ao pegar esta classe armazenamos dentro de instrumento
+    -> fazemos interpolção com instrumento ou seja, para 
+        cada tecla que eu tocar irá modifcar esta referência.
+    */
+    const idAudio = `#som_${instrumento}`
+
+    //aplicando conceito de Funções Anônimas:
+    tecla.onclick = function(){
+        tocarSom(idAudio)
+    }
     
-    console.log(listaDeTeclas[contador].onclick = tocarSomPom)
+
     contador ++;
 }
 
